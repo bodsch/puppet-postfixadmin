@@ -15,13 +15,13 @@ class postfixadmin::install {
       # the debian package has a hard depends to apache2 (WHAT THE FUCK UP!)
       # okay, we install our package from source
       staging::deploy { "${full_package_name}":
-        source  => $package_source,
-        target  => "$::postfixadmin::install_directory",
-        require => File[ "$::postfixadmin::install_directory" ]
+        source  => "${package_source}",
+        target  => "${::postfixadmin::install_directory}",
+        require => File[ "${::postfixadmin::install_directory}" ]
       }
 
-      file { "$::postfixadmin::install_directory/$::postfixadmin::params::package_name":
-        ensure => link,
+      file { "${::postfixadmin::install_directory}/${::postfixadmin::params::package_name}":
+        ensure  => link,
         target  => "$::postfixadmin::install_directory/$::postfixadmin::params::package_name-${::postfixadmin::install_source_version}",
         require => Staging::Deploy[ "${full_package_name}" ]
       }

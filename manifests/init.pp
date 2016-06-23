@@ -25,7 +25,7 @@ class postfixadmin (
   validate_string( $dba_user )
   validate_string( $dba_pass )
   validate_string( $dba_name )
-  
+
   # -----------------------------------------------------------------------------------
 
   class { 'postfixadmin::install': } ->
@@ -35,4 +35,3 @@ class postfixadmin (
 }
 
 #
-

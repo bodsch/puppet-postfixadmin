@@ -6,8 +6,8 @@ class postfixadmin::config {
 
 
   file { "${::postfixadmin::install_directory}/${::postfixadmin::params::package_name}/config.local.php":
-    ensure     => file,
-    content    => template('postfixadmin/config.local.php.erb'),
+    ensure  => file,
+    content => template('postfixadmin/config.local.php.erb'),
   }
 
 }
