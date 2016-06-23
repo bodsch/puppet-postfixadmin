@@ -1,0 +1,45 @@
+{
+  "name": "bodsch-postfixadmin",
+  "version": "1.0.1",
+  "author": "Bodo Schulz",
+  "summary": "This module installs, configures and manages a Postfixadmin",
+  "license": "Apache-2.0",
+  "source": "git://github.com/bodsch/puppet-postfixadmin.git",
+  "project_page": "https://github.com/bodsch/puppet-postfixadmin",
+  "issues_url": "https://github.com/bodsch/puppet-postfixadmin/issues",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.5.0 < 5.0.0"},
+    {"name":"puppet-staging","version_requirement":">= 1.0.3"}
+  ],
+  "data_provider": null,
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": ">= 3.2.0"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.2.0"
+    }
+  ],
+  "tags": [
+    "postfixadmin"
+  ]
+}
