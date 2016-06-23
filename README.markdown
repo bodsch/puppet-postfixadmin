@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/UGNS/puppet-postfixadmin.png?branch=master)](https://travis-ci.org/UGNS/puppet-postfixadmin)
+[![Build Status](https://travis-ci.org/bodsch/puppet-postfixadmin.png?branch=master)](https://travis-ci.org/bodsch/puppet-postfixadmin)
 
 ####Table of Contents
 

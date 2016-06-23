@@ -1,0 +1,33 @@
+<?php
+
+$CONF['database_type']     = 'mysqli';
+$CONF['database_user']     = '<%= scope.lookupvar('postfixadmin::dba_user') %>';
+$CONF['database_password'] = '<%= scope.lookupvar('postfixadmin::dba_pass') %>';
+$CONF['database_name']     = '<%= scope.lookupvar('postfixadmin::dba_name') %>';
+
+$CONF['setup_password']    = '0dc5f58410b43853cce08104f4453e7b:fb579c97d601316de19be626007348e8aad3c374';
+
+$CONF['configured']        = true;
+
+$CONF['domain_path']       = 'YES';
+
+$CONF['default_aliases'] = array (
+  'abuse'      => 'abuse@<%= scope.lookupvar('postfixadmin::admin_domain') %>',
+  'hostmaster' => 'hostmaster@<%= scope.lookupvar('postfixadmin::admin_domain') %>',
+  'postmaster' => 'postmaster@<%= scope.lookupvar('postfixadmin::admin_domain') %>',
+  'webmaster'  => 'webmaster@<%= scope.lookupvar('postfixadmin::admin_domain') %>'
+);
+
+$CONF['password_validation'] = array(
+#    '/regular expression/' => '$PALANG key (optional: + parameter)',
+  '/.{3}/'                => 'password_too_short 5',      # minimum length 5 characters
+#    '/([a-zA-Z].*){3}/'     => 'password_no_characters 3',  # must contain at least 3 characters
+#    '/([0-9].*){2}/'        => 'password_no_digits 2',      # must contain at least 2 digits
+);
+
+$CONF['encrypt']   = 'dovecot:CRAM-MD5';
+$CONF['dovecotpw'] = '/usr/bin/doveadm pw';
+
+$CONF['footer_text'] = 'Return to pfa';
+$CONF['footer_link'] = '<%= scope.lookupvar('postfixadmin::footer_link') %>';
+

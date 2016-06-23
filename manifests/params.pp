@@ -4,17 +4,16 @@
 # It sets variables according to platform
 #
 class postfixadmin::params {
-  case $::osfamily {
-    'Debian': {
-      $package_name = 'postfixadmin'
-      $service_name = 'postfixadmin'
-    }
-    'RedHat', 'Amazon': {
-      $package_name = 'postfixadmin'
-      $service_name = 'postfixadmin'
-    }
-    default: {
-      fail("${::operatingsystem} not supported")
-    }
-  }
+
+  $package_name             = 'postfixadmin'
+
+  $install_from_source      = false
+  $install_source_version   = '2.90'
+  $install_directory        = '/var/www'
+
+  $dba_name                 = 'postfix'
+
 }
+
+#
+
