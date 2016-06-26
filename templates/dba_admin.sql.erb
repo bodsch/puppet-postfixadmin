@@ -1,0 +1,30 @@
+---
+--- Admin access
+
+USE `<%= scope.lookupvar('postfixadmin::dba_name') %>`;
+
+
+LOCK TABLES `admin` WRITE;
+INSERT INTO `admin` VALUES ('admin@<%= scope.lookupvar('postfixadmin::admin_domain') %>','<%= scope.lookupvar('admin_hash') %>',1,now(),now(),1);
+UNLOCK TABLES;
+
+LOCK TABLES `alias` WRITE;
+INSERT INTO `alias` VALUES ('admin@<%= scope.lookupvar('postfixadmin::admin_domain') %>','admin@<%= scope.lookupvar('postfixadmin::admin_domain') %>','<%= scope.lookupvar('postfixadmin::admin_domain') %>',now(),now(),1);
+UNLOCK TABLES;
+
+LOCK TABLES `domain` WRITE;
+INSERT INTO `domain` VALUES ('ALL','',0,0,0,0,'',0,now(),now(),1);
+UNLOCK TABLES;
+
+LOCK TABLES `domain_admins` WRITE;
+INSERT INTO `domain_admins` VALUES ('admin@<%= scope.lookupvar('postfixadmin::admin_domain') %>','ALL',now(),1);
+UNLOCK TABLES;
+
+LOCK TABLES `log` WRITE;
+INSERT INTO `log` VALUES (now(),'puppet setup','','create_admin','admin@<%= scope.lookupvar('postfixadmin::admin_domain') %>');
+UNLOCK TABLES;
+
+LOCK TABLES `mailbox` WRITE;
+INSERT INTO `mailbox` VALUES ('admin@<%= scope.lookupvar('postfixadmin::admin_domain') %>','<%= scope.lookupvar('admin_hash') %>','','<%= scope.lookupvar('postfixadmin::admin_domain') %>/admin/',0,'admin','<%= scope.lookupvar('postfixadmin::admin_domain') %>',now(),now(),1);
+UNLOCK TABLES;
+

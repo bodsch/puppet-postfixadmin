@@ -11,6 +11,8 @@ class postfixadmin::params {
   $install_source_version   = '2.90'
   $install_directory        = '/var/www'
 
+  $dba_type                 = 'mysql'
+  $dba_host                 = 'localhost'
   $dba_name                 = 'postfix'
 
 }
