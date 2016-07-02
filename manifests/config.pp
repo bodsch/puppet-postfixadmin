@@ -27,6 +27,8 @@ class postfixadmin::config {
 
   file { "${install_dir}/${package_name}/config.local.php":
     ensure  => file,
+    owner   => 'www-data',
+    group   => 'www-data',
     content => template('postfixadmin/config.local.php.erb'),
   }
 
