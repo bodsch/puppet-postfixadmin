@@ -8,7 +8,7 @@ class postfixadmin::install {
   $full_package_name        = "${::postfixadmin::package_name}-${::postfixadmin::install_source_version}.tar.gz"
   $package_source           = "http://downloads.sourceforge.net/project/${::postfixadmin::package_name}/${::postfixadmin::package_name}/${::postfixadmin::package_name}-${::postfixadmin::install_source_version}/${full_package_name}"
 
-  if( $dba_type == 'mysql' ) {
+  if( $postfixadmin::dba_type == 'mysql' ) {
 
     if( !defined( Package['php5-mysql'] ) ) {
 
@@ -43,7 +43,7 @@ class postfixadmin::install {
       require => Staging::Deploy[ $full_package_name ]
     }
 
-    exec { "[postfixadmin] change user and group rights":
+    exec { '[postfixadmin] change user and group rights':
       path    => ['/bin/', '/usr/bin'],
       command => "chown -R www-data:www-data \
          ${::postfixadmin::install_directory}/${::postfixadmin::params::package_name}-${::postfixadmin::install_source_version}",
